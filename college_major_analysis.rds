@@ -1,0 +1,21 @@
+install.packages("devtools")
+devtools::install_github("jhudsl/collegeIncome")
+library(collegeIncome)
+data(college)
+
+devtools::install_github("jhudsl/matahari")
+library(matahari)
+
+dance_start(value = FALSE, contents = FALSE)
+
+
+
+fit <- lm(median~major_category-1,college)
+summary(fit)
+
+library(ggplot2)
+
+ggplot(college,aes(x=major_category,y=median))+
+  geom_boxplot()
+
+dance_save("~/Desktop/college_major_analysis.rds")
